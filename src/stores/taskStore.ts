@@ -67,6 +67,11 @@ export const useTaskStore = defineStore('task', () => {
     }
   }
 
+  function $reset() {
+    tasks.value = []
+    isLoading.value = false
+  }
+
   return {
     tasks,
     getTasks,
@@ -76,6 +81,7 @@ export const useTaskStore = defineStore('task', () => {
     getFavoriteTasks,
     getFavoriteCount,
     getTotalCount,
-    isLoading
+    isLoading,
+    $reset
   }
 })

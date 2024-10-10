@@ -50,5 +50,7 @@ const filter = ref<'all' | 'favorites'>('all')
         <TaskDetails :task="task" />
       </div>
     </div>
+
+    <!--    <button @click="taskStore.$reset">Reset</button>-->
   </main>
 </template>
