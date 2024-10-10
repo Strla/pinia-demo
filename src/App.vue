@@ -6,11 +6,13 @@ import { storeToRefs } from 'pinia'
 import TaskForm from '@/components/TaskForm.vue'
 
 const taskStore = useTaskStore()
+taskStore.getTasks()
 const {
   tasks: allTasks,
   getFavoriteTasks: favoriteTasks,
   getFavoriteCount: favoriteCount,
-  getTotalCount: totalCount
+  getTotalCount: totalCount,
+  isLoading
 } = storeToRefs(taskStore)
 
 const filter = ref<'all' | 'favorites'>('all')
@@ -31,6 +33,8 @@ const filter = ref<'all' | 'favorites'>('all')
       <button @click="filter = 'all'">All Tasks</button>
       <button @click="filter = 'favorites'">Favorite Tasks</button>
     </nav>
+
+    <div class="loading" v-if="isLoading">Loading tasks...</div>
 
     <div class="task-list" v-if="filter === 'all'">
       <p>All Tasks</p>
